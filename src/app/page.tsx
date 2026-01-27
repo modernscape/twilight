@@ -4,6 +4,7 @@ import {useState, useEffect} from "react" // useEffectを追加
 import Image from "next/image"
 import {motion, AnimatePresence} from "framer-motion"
 import {Instagram} from "lucide-react"
+import Link from "next/link"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -115,10 +116,10 @@ export default function Home() {
       <div className="absolute bottom-0 left-0 w-full md:relative bg-transparent md:bg-white z-50 pointer-events-none md:pointer-events-auto">
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-10 md:py-0 md:h-24 space-y-8 md:space-y-0 pb-16 md:pb-0">
           <div className="flex space-x-10 md:space-x-8 text-[10px] font-black tracking-[0.2em] pointer-events-auto">
-            <a href="#" className="hover:line-through transition-all uppercase">
+            <a href="/about" className="hover:line-through transition-all uppercase">
               About
             </a>
-            <a href="#" className="hover:line-through transition-all uppercase">
+            <a href="/about#selection" className="hover:line-through transition-all uppercase">
               Selection
             </a>
           </div>
@@ -170,17 +171,37 @@ export default function Home() {
                   />
                 </div>
               </button>
+
               <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
-                {["Online Store", "About", "Selection"].map((item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
-                  >
-                    {item}
-                  </a>
-                ))}
+                {[
+                  {name: "Online Store", href: "https://example.com", isExternal: true},
+                  {name: "About", href: "/about", isExternal: false},
+                  {name: "Selection", href: "/about#selection", isExternal: false},
+                ].map((item) =>
+                  item.isExternal ? (
+                    // 外部リンク（ストアなど）
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                      className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    // 内部リンク（About, Selectionアンカー）
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
+                    >
+                      {item.name}
+                    </Link>
+                  ),
+                )}
               </nav>
             </motion.div>
           </>
