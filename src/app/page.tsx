@@ -47,7 +47,7 @@ export default function Home() {
       {/* 3. メインレイアウト */}
       <div className="flex-1 flex flex-col md:flex-row w-full relative">
         {/* コンテンツエリア (中央ロゴ) */}
-        <div className="flex-1 flex flex-col justify-center items-center p-10 px-24 z-20 pointer-events-none md:pointer-events-auto">
+        <div className="flex-1 flex flex-col justify-center items-center p-10 px-18 z-20 pointer-events-none md:pointer-events-auto">
           <div className="w-[280px] max-w-[280px] md:max-w-[500px] flex flex-col items-center">
             <div className="w-full pb-6 text-center">
               <Image
@@ -67,9 +67,9 @@ export default function Home() {
 
         {/* 画像エリア (SP: 完全に隙間なし全画面 / PC: 右側) */}
         {/* SP時は p-0 に、PC時は md:p-24 等で余白を維持 */}
-        <div className="absolute inset-0 p-0 md:relative md:inset-auto md:flex-2 md:pt-24 md:pl-0 md:pb-12 z-10">
+        <div className="absolute inset-0 p-0 md:relative md:inset-auto md:flex-[3] md:pt-24 md:pl-0 md:pb-12 z-10">
           <div className="relative w-full h-full border-0 overflow-hidden">
-            <Image src={`${basePath}/hero-texture.jpg`} alt="Visual" fill className="object-cover" priority />
+            <Image src={`${basePath}/hero-texture.png`} alt="Visual" fill className="object-cover" priority />
           </div>
         </div>
       </div>
