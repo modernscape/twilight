@@ -5,6 +5,8 @@ import {motion, AnimatePresence, color} from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import {Instagram} from "lucide-react"
+// import Menu from "@/components/Menu"
+import Menu from "@/src/components/Menu"
 
 export default function AboutPage() {
   const [isOpen, setIsOpen] = useState(false) // メニュー状態
@@ -217,8 +219,10 @@ export default function AboutPage() {
         </div>
       </footer>
 
+      {/* 共通メニューコンポーネントを呼び出す */}
+      <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
       {/* 5. スライドメニュー (Topと共通) */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <>
             <motion.div
@@ -276,7 +280,7 @@ export default function AboutPage() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </main>
   )
 }

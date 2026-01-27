@@ -4,7 +4,8 @@ import {useState, useEffect} from "react" // useEffectを追加
 import Image from "next/image"
 import {motion, AnimatePresence} from "framer-motion"
 import {Instagram} from "lucide-react"
-import Link from "next/link"
+// import Link from "next/link"
+import Menu from "../components/Menu"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -132,8 +133,11 @@ export default function Home() {
         </div>
       </div>
 
+      {/* 共通メニューコンポーネントを呼び出す */}
+      <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
+
       {/* 5. スライドメニュー */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <>
             <motion.div
@@ -206,7 +210,7 @@ export default function Home() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </main>
   )
 }
