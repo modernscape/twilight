@@ -87,7 +87,7 @@ export default function Home() {
               />
             </div>
             <p className="mt-4 text-[10px] md:text-sm tracking-[0em] font-bold uppercase opacity-80 text-center text-black">
-              Tokyo / Japan
+              Niigata / Japan
             </p>
           </div>
         </div>
