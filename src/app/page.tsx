@@ -1,13 +1,39 @@
 "use client"
 
-import {useState} from "react"
+import {useState, useEffect} from "react" // useEffectを追加
 import Image from "next/image"
 import {motion, AnimatePresence} from "framer-motion"
 import {Instagram} from "lucide-react"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
+  // 画像切り替え用のステート
+  const [currentImgIndex, setCurrentImgIndex] = useState(0)
+
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
+
+  // 画像のリスト
+  const images = [
+    `${basePath}/hero-texture-1.png`,
+    `${basePath}/hero-texture-2.png`,
+    `${basePath}/hero-texture-3.png`,
+    `${basePath}/hero-texture-4.png`,
+  ]
+
+  // 5秒ごとに画像をランダムに切り替えるタイマー
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImgIndex((prevIndex) => {
+        let nextIndex
+        do {
+          nextIndex = Math.floor(Math.random() * images.length)
+        } while (nextIndex === prevIndex) // 同じ画像が連続しないように
+        return nextIndex
+      })
+    }, 5000) // 5000ms = 5秒
+
+    return () => clearInterval(timer)
+  }, [images.length])
 
   const lineVariants = {
     closed: (i: number) => ({
@@ -29,7 +55,7 @@ export default function Home() {
         <Image src={`${basePath}/logo.png`} alt="logo" width={110} height={35} className="w-auto h-7 md:h-9 object-contain" />
       </div>
 
-      {/* 2. 右上固定MENUボタン (SP時は枠線を消してスッキリさせています) */}
+      {/* 2. 右上固定MENUボタン */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -37,7 +63,7 @@ export default function Home() {
             animate={{opacity: 1}}
             exit={{opacity: 0}}
             onClick={() => setIsOpen(true)}
-            className="fixed top-0 right-0 p-4 md:p-6 bg-white md:bg-white z-[80] hover:bg-black hover:text-white transition-colors"
+            className="fixed top-0 right-0 p-4 md:p-6 bg-white z-[80] hover:bg-black hover:text-white transition-colors"
           >
             <span className="text-[10px] font-black tracking-[0.2em] uppercase">Menu</span>
           </motion.button>
@@ -46,8 +72,8 @@ export default function Home() {
 
       {/* 3. メインレイアウト */}
       <div className="flex-1 flex flex-col md:flex-row w-full relative">
-        {/* コンテンツエリア (中央ロゴ) */}
-        <div className="flex-1 flex flex-col justify-center items-center p-10 px-18 z-20 pointer-events-none md:pointer-events-auto">
+        {/* ロゴエリア：固定幅 */}
+        <div className="flex-none md:w-[400px] flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto">
           <div className="w-[280px] max-w-[280px] md:max-w-[500px] flex flex-col items-center">
             <div className="w-full pb-6 text-center">
               <Image
@@ -65,16 +91,26 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 画像エリア (SP: 完全に隙間なし全画面 / PC: 右側) */}
-        {/* SP時は p-0 に、PC時は md:p-24 等で余白を維持 */}
-        <div className="absolute inset-0 p-0 md:relative md:inset-auto md:flex-[3] md:pt-24 md:pl-0 md:pb-12 z-10">
+        {/* 画像エリア：フェードアニメーション */}
+        <div className="absolute inset-0 p-0 md:relative md:inset-auto md:flex-1 md:pt-24 md:pl-0 md:pb-12 z-10">
           <div className="relative w-full h-full border-0 overflow-hidden">
-            <Image src={`${basePath}/hero-texture.png`} alt="Visual" fill className="object-cover" priority />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImgIndex}
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                transition={{duration: 1.5, ease: "easeInOut"}}
+                className="absolute inset-0"
+              >
+                <Image src={images[currentImgIndex]} alt={`Visual ${currentImgIndex}`} fill className="object-cover" priority />
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
 
-      {/* 4. 統合フッター (SPは全画面画像の上に配置) */}
+      {/* 4. 統合フッター */}
       <div className="absolute bottom-0 left-0 w-full md:relative bg-transparent md:bg-white z-50 pointer-events-none md:pointer-events-auto">
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-10 md:py-0 md:h-24 space-y-8 md:space-y-0 pb-16 md:pb-0">
           <div className="flex space-x-10 md:space-x-8 text-[10px] font-black tracking-[0.2em] pointer-events-auto">
@@ -85,7 +121,6 @@ export default function Home() {
               Selection
             </a>
           </div>
-
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 pointer-events-auto">
             <p className="text-[10px] md:text-[9px] font-black tracking-[0.2em] uppercase opacity-80 md:opacity-50">© 2026. twilight</p>
             <a href="#" className="hover:scale-125 transition-transform">
@@ -111,11 +146,11 @@ export default function Home() {
               animate={{x: 0}}
               exit={{x: "100%"}}
               transition={{type: "spring", damping: 25, stiffness: 200}}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] flex flex-col"
+              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] border-l border-black flex flex-col"
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-6 md:p-10 w-full flex flex-col items-center justify-center space-y-2 bg-white"
+                className="p-6 md:p-10 border-b border-black w-full flex flex-col items-center justify-center space-y-2 bg-white"
               >
                 <div className="relative w-8 h-4 flex items-center justify-center">
                   <motion.div
