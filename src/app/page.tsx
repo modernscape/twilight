@@ -174,7 +174,7 @@ export default function Home() {
 
               <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
                 {[
-                  {name: "Online Store", href: "https://example.com", isExternal: true},
+                  // {name: "Online Store", href: "https://example.com", isExternal: true},
                   {name: "About", href: "/about", isExternal: false},
                   {name: "Selection", href: "/about#selection", isExternal: false},
                 ].map((item) =>
@@ -186,7 +186,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}
-                      className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
+                      className="text-lg font-black tracking-[0.2em] hover:opacity-50 transition-all uppercase"
                     >
                       {item.name}
                     </a>
@@ -196,7 +196,7 @@ export default function Home() {
                       key={item.name}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
+                      className="text-lg font-black tracking-[0.2em] hover:line-through transition-all uppercase"
                     >
                       {item.name}
                     </Link>

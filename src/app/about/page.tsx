@@ -1,7 +1,7 @@
 "use client"
 
 import {useState} from "react" // useStateを追加
-import {motion, AnimatePresence} from "framer-motion"
+import {motion, AnimatePresence, color} from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import {Instagram} from "lucide-react"
@@ -38,16 +38,18 @@ export default function AboutPage() {
   ]
 
   return (
-    <main className="min-h-screen w-full bg-white text-black font-sans selection:bg-black selection:text-white">
+    <main className="min-h-screen w-full bg-white text-black font-sans selection:bg-black selection:text-white scroll-smooth">
       {/* 1. 右上固定MENUボタン */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
-            initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
+            initial={{opacity: 0}}
+            // whileInView={{opacity: 1, y: 0}}
+            // viewport={{once: false, amount: 0.1}} // once: false にすると再発火します
             onClick={() => setIsOpen(true)}
-            className="fixed top-0 right-0 p-4 md:p-6 bg-white z-[80] hover:bg-black hover:text-white transition-colors border-l border-b border-black md:border-none"
+            className="scroll-mt-60 fixed top-0 right-0 p-4 md:p-6 bg-white z-[80] hover:bg-black hover:text-white transition-colors border-l border-b border-black md:border-none"
           >
             <span className="text-[10px] font-black tracking-[0.2em] uppercase">Menu</span>
           </motion.button>
@@ -78,7 +80,7 @@ export default function AboutPage() {
           {/* Shop Info with Image */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 text-left">
             <div className="relative w-full max-w-[400px] aspect-[4/3] overflow-hidden">
-              <Image src={`${basePath}/img-1.png`} alt="Shop" fill className="object-cover" />
+              <Image src={`${basePath}/img-0.png`} alt="Shop" fill className="object-cover" />
             </div>
             <div className="text-[11px] md:text-xs tracking-widest space-y-6 pt-4">
               <div className="flex gap-8">
@@ -231,11 +233,11 @@ export default function AboutPage() {
               animate={{x: 0}}
               exit={{x: "100%"}}
               transition={{type: "spring", damping: 25, stiffness: 200}}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] border-l border-black flex flex-col"
+              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] flex flex-col"
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-6 md:p-10 border-b border-black w-full flex flex-col items-center justify-center space-y-2 bg-white"
+                className="p-6 md:p-10 w-full flex flex-col items-center justify-center space-y-2 bg-white"
               >
                 <div className="relative w-8 h-4 flex items-center justify-center">
                   <motion.div
@@ -256,8 +258,8 @@ export default function AboutPage() {
               </button>
               <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
                 {[
-                  {name: "Top", href: "/"},
-                  {name: "Online Store", href: "#"},
+                  //   {name: "Top", href: "/"},
+                  //   {name: "Online Store", href: "#"},
                   {name: "About", href: "/about"},
                   {name: "Selection", href: "/about#selection"},
                 ].map((item) => (
@@ -265,7 +267,7 @@ export default function AboutPage() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
+                    className="text-lg font-black tracking-[0.2em] hover:line-through transition-all uppercase"
                   >
                     {item.name}
                   </Link>
