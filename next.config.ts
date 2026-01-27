@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production"
+
 const nextConfig = {
-  output: "export", // 静的HTMLとして書き出す設定
+  output: "export",
+  // GitHub Actions でビルドされる時だけリポジトリ名をパスに含める
+  basePath: isProd ? "/twilight" : "",
   images: {
-    unoptimized: true, // GitHub Pagesでは画像の自動最適化が使えないため無効化
+    unoptimized: true,
   },
-  // もし URLが「https://ユーザー名.github.io/リポジトリ名/」になる場合は
-  // basepath: '/リポジトリ名',
 }
 
-export default nextConfig
+module.exports = nextConfig

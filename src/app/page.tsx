@@ -5,14 +5,17 @@ import Image from "next/image"
 import {motion, AnimatePresence} from "framer-motion"
 import {Instagram} from "lucide-react"
 
+import logoImg from "@/public/logo.png"
+import heroImg from "@/public/hero-texture.jpg"
+
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <main className="relative h-[100dvh] w-full bg-white overflow-hidden flex flex-col font-sans">
-      {/* 1. 左上ロゴ */}
+      {/* 1. 左上ロゴ（変数 logoImg を使う） */}
       <div className="fixed top-6 left-6 md:top-8 md:left-8 z-[100]">
-        <Image src="/logo.png" alt="logo" width={110} height={35} className="w-auto h-7 md:h-9" />
+        <Image src={logoImg} alt="logo" width={110} height={35} className="w-auto h-7 md:h-9" />
       </div>
 
       {/* 2. ページ上の固定「MENU」ボタン */}
@@ -46,7 +49,7 @@ export default function Home() {
         <div className="flex-1 relative p-6 md:p-12 lg:p-16 lg:pb-0">
           {/* この p-xx が画像周囲の白い余白になります */}
           <div className="relative w-full h-full border border-black overflow-hidden shadow-sm">
-            <Image src="/hero-texture.jpg" alt="Visual" fill className="object-cover" priority />
+            <Image src={heroImg} alt="Visual" fill className="object-cover" priority />
           </div>
         </div>
       </div>
