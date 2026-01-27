@@ -202,7 +202,7 @@ export default function AboutPage() {
       </div>
 
       {/* --- FOOTER --- */}
-      <footer className="w-full border-t border-black px-6 md:px-10 h-24 flex items-center justify-between relative z-10">
+      <footer className="w-full px-6 md:px-10 h-24 flex items-center justify-between relative z-10">
         <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
           <Link href="/about" className="hover:line-through">
             About
