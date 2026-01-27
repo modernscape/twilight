@@ -49,7 +49,7 @@ export default function Home() {
       <div className="flex-1 flex flex-col md:flex-row w-full mt-16 md:mt-0">
         <div className="flex-1 flex flex-col justify-center items-center p-10">
           <div className="w-full max-w-[400px] md:max-w-[600px] flex flex-col items-center">
-            <div className="w-full border-b-[12px] md:border-b-[20px] border-black pb-6">
+            <div className="w-full border-b-[12px] md:border-b-[0px] border-black pb-6">
               <Image
                 src={`${basePath}/logo.png`}
                 alt="Main Logo"
