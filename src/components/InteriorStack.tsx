@@ -29,20 +29,19 @@ function StackCard({
   basePath: string
   progress: MotionValue<number>
 }) {
-  // const start = index / total
-  // const end = (index + 1) / total
+  // 修正：計算の基準を調整
+  const segment = 1 / (total > 1 ? total - 1 : 1)
+  const start = index * segment
+  const end = (index + 1) * segment
 
-  // 修正前: index / total
-  // 修正後: index / (total - 1)
-  // こうすることで、最後の画像 (index === total-1) の時に progress が 1.0 になります
-  const start = index / (total > 1 ? total - 1 : 1)
-  const end = (index + 1) / (total > 1 ? total - 1 : 1)
+  // ✨ ここがポイント！
+  // 画像がパッと現れてから、次の画像が来るまで「粘る」ように範囲を調整します。
+  // 0.8 という数値は、セグメントの8割までは不透明度100%を維持するという意味です。
+  const fadeStart = start + segment * 0.8
 
-  // 最後の画像だけは、表示されたらそのまま固定（消さない）設定
-  const isLast = index === total - 1
-
-  const scale = useTransform(progress, [start, end], [1, isLast ? 1 : 0.9])
-  const opacity = useTransform(progress, [start, end], [1, isLast ? 1 : 0])
+  // スケールと不透明度の変化を「セグメントの最後の方」だけに集中させる
+  const scale = useTransform(progress, [fadeStart, end], [1, index === total - 1 ? 1 : 0.9])
+  const opacity = useTransform(progress, [fadeStart, end], [1, index === total - 1 ? 1 : 0])
   // const scale = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0.85])
   // const opacity = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0])
   const y = useTransform(progress, [start, end], [0, index === total - 1 ? 0 : -40])
@@ -98,7 +97,7 @@ export default function InteriorStack({basePath}: {basePath: string}) {
       {/* 💻 PC用 (Desktop): これまでのリッチなスタック演出 */}
       {/* // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、 // stickyコンテナを h-screen
       ではなく、画像と同じ比率（aspect-[16/9]）に合わせる */}
-      <div ref={containerRef} className="hidden md:block relative h-[400vh] w-full mt-20 mb-20">
+      <div ref={containerRef} className="hidden md:block relative h-[1200vh] w-full mt-20 mb-20">
         <div className="sticky top-[15%] left-0 w-full aspect-[16/9] md:aspect-[21/9]">
           {/* ✨ コンポーネント化したインジケーターを配置 */}
           <VerticalIndicator total={images.length} progress={scrollYProgress} />
