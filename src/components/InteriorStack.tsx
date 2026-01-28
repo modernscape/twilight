@@ -105,32 +105,34 @@ export default function InteriorStack({basePath}: {basePath: string}) {
       {/* // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、 // stickyコンテナを h-screen
       ではなく、画像と同じ比率（aspect-[16/9]）に合わせる */}
       <div ref={containerRef} className="hidden md:block relative h-[800vh] w-full mt-20 mb-20">
-        <div className="sticky top-[15%] left-0 w-full aspect-[16/9] md:aspect-[21/9]">
+        <div className="sticky top-0 left-0 w-full h-screen flex flex-col items-center justify-center">
           {/* ✨ コンポーネント化したインジケーターを配置 */}
           <VerticalIndicator total={images.length} progress={scrollYProgress} />
 
-          {/* ABOUT 文字 (画像の上に絶対配置) */}
-          <motion.h2
-            className="absolute -top-16 left-1/2 -translate-x-1/2 text-xl font-black tracking-[0.5em] uppercase z-[120]"
-            style={{opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0])}}
-          >
-            SHOP
-          </motion.h2>
-
-          {/* sticky の高さを h-screen にせず、
+          <div className="relative w-full aspect-[21/9] max-[1700px]:aspect-[16/9] max-[1400px]:aspect-[16/10] max-[1100px]:aspect-[16/13] transition-[aspect-ratio] duration-500">
+            {/* </div> */}
+            {/* ABOUT 文字 (画像の上に絶対配置) */}
+            <motion.h2
+              className="absolute -top-16 left-1/2 -translate-x-1/2 text-xl font-black tracking-[0.5em] uppercase z-[120]"
+              style={{opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0])}}
+            >
+              SHOP
+            </motion.h2>
+            {/* sticky の高さを h-screen にせず、
         画像の高さ（aspect-[16/9]）に合わせることで上下の余白を消す
       */}
-          <div className="sticky top-[20%] left-0 w-full aspect-[16/9] md:aspect-[21/9] flex items-center justify-center">
-            {images.map((src, index) => (
-              <StackCard
-                key={`${src}-${index}`}
-                src={src}
-                index={index}
-                total={images.length}
-                basePath={basePath}
-                progress={scrollYProgress}
-              />
-            ))}
+            <div className="sticky top-[20%] left-0 w-full aspect-[16/9] md:aspect-[21/9] flex items-center justify-center h-full">
+              {images.map((src, index) => (
+                <StackCard
+                  key={`${src}-${index}`}
+                  src={src}
+                  index={index}
+                  total={images.length}
+                  basePath={basePath}
+                  progress={scrollYProgress}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

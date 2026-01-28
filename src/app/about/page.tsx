@@ -31,7 +31,7 @@ export default function AboutPage() {
         {/* ✨ 新しい画像スタックコンポーネント */}
         <InteriorStack basePath={basePath} />
 
-        <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium">
+        <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium -mt-30 max-[1500px]:-mt-50">
           <p>2017年6月に、大阪・中津にてオープンしたショップです。</p>
           <p>伝えるべき今を僕らの眼で選び抜き、新しい価値観を創造します。</p>
           <p>珈琲を飲むように、本を読むように、絵を見るように、</p>
