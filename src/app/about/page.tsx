@@ -1,60 +1,10 @@
 "use client"
 
-import {useState} from "react" // useStateを追加
 import {motion} from "framer-motion"
-import Image from "next/image"
-// import Link from "next/link"
-// import {Instagram} from "lucide-react"
-// import Menu from "@/components/Menu"
-import Menu from "@/src/components/Menu"
 import SelectionImage from "@/src/components/SelectionImage"
-
-// import {useScroll, useTransform} from "framer-motion"
-// import {useRef} from "react"
-
-// function SelectionImage_({src, title, basePath}: {src: string; title: string; basePath: string}) {
-//   const ref = useRef(null)
-//   // const {scrollYProgress} = useScroll({
-//   //   target: ref,
-//   //   // 画像が画面の下から入って(start end)から、上へ消える(end start)までを計測
-//   //   offset: ["start end", "end start"],
-//   // })
-
-//   // 進捗率（0〜1）に対して、カラーにする区間を絞り込む
-//   // 画面の30%〜60%付近に画像がある時だけカラーにする設定
-//   // const filterValue = useTransform(
-//   //   scrollYProgress,
-//   //   [0, 0.3, 0.35, 0.4, 0.6, 0.65, 0.7, 1],
-//   //   [
-//   //     "grayscale(100%)", // 0: 画面下（グレー）
-//   //     "grayscale(95%)", // 0.3: 30%地点までグレーを維持
-//   //     "grayscale(90%)", // 0.35: 30%地点までグレーを維持
-//   //     "grayscale(0%)", // 0.4: 40%地点でカラー完了
-//   //     "grayscale(0%)", // 0.6: 60%地点までカラー維持
-//   //     "grayscale(90%)", // 0.65: 60%地点までカラー維持
-//   //     "grayscale(95%)", // 0.7: 70%地点でグレーに戻る
-//   //     "grayscale(100%)", // 1: 画面上（グレー）
-//   //   ],
-//   // )
-
-//   // const opacityValue = useTransform(scrollYProgress, [0, 0.25, 0.65, 1], [0.3, 1, 1, 0.3])
-
-//   return (
-//     <div ref={ref} className="relative w-full aspect-video overflow-hidden">
-//       <motion.div
-//         style={{filter: filterValue}}
-//         className="w-full h-full"
-//         // 初期状態を強制的にグレーに設定
-//         initial={{filter: "grayscale(100%)"}}
-//       >
-//         <Image src={`${basePath}${src}`} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-//       </motion.div>
-//     </div>
-//   )
-// }
+import Image from "next/image"
 
 export default function AboutPage() {
-  const [isOpen, setIsOpen] = useState(false) // メニュー状態
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
 
   const fadeInUp = {
@@ -64,19 +14,6 @@ export default function AboutPage() {
     transition: {duration: 1.2, ease: [0.22, 1, 0.36, 1] as const},
   }
 
-  // const lineVariants = {
-  //   closed: (i: number) => ({
-  //     rotate: 0,
-  //     y: i === 1 ? -3 : 3,
-  //     transition: {duration: 0.2},
-  //   }),
-  //   open: (i: number) => ({
-  //     rotate: i === 1 ? 45 : -45,
-  //     y: 0,
-  //     transition: {delay: 0.2, duration: 0.3},
-  //   }),
-  // }
-
   const selectionItems = [
     {id: "01", title: "Industrial Texture", img: "/img-1.png"},
     {id: "02", title: "Ambient Light", img: "/img-2.png"},
@@ -85,238 +22,107 @@ export default function AboutPage() {
   ]
 
   return (
-    <main className="min-h-screen w-full bg-white text-black font-sans selection:bg-black selection:text-white scroll-smooth">
-      {/* 1. 右上固定MENUボタン */}
-      {/* <AnimatePresence>
-        {!isOpen && (
-          <motion.button
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
-            initial={{opacity: 0}}
-            // whileInView={{opacity: 1, y: 0}}
-            // viewport={{once: false, amount: 0.1}} // once: false にすると再発火します
-            onClick={() => setIsOpen(true)}
-            className="scroll-mt-60 fixed top-0 right-0 p-4 md:p-6 bg-white z-[80] hover:bg-black hover:text-white transition-colors border-l border-b border-black md:border-none"
-          >
-            <span className="text-[10px] font-black tracking-[0.2em] uppercase">Menu</span>
-          </motion.button>
-        )}
-      </AnimatePresence> */}
+    // ナビゲーションと被らないように pt-40（上の余白）は残します
+    <main className="min-h-screen w-full bg-white text-black pt-40 pb-32 px-6 md:px-10 flex flex-col items-center">
+      {/* --- ABOUT SECTION --- */}
+      <motion.section {...fadeInUp} id="about" className="w-full max-w-[800px] mb-60 text-center">
+        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2>
+        {/* ❌ Line removed: w-8 h-[2px] bg-black */}
 
-      {/* --- HEADER (ロゴのみ) --- */}
-      {/* <nav className="fixed top-0 left-0 w-full h-20 flex items-center px-6 md:px-10 z-[70] bg-white/90 backdrop-blur-sm">
-        <Link href="/">
-          <Image src={`${basePath}/logo.png`} alt="logo" width={100} height={30} className="w-auto h-6 md:h-7 object-contain" />
-        </Link>
-      </nav> */}
-
-      <div className="pt-40 pb-32 px-6 md:px-0 flex flex-col items-center">
-        {/* --- ABOUT SECTION --- */}
-        <motion.section {...fadeInUp} className="w-full max-w-[800px] mb-40 text-center">
-          <h2 className="text-xl font-bold tracking-[0.4em] uppercase mb-4">ABOUT</h2>
-          <div className="w-8 h-[2px] bg-black mx-auto mb-12" />
-
-          <div className="space-y-6 text-[13px] md:text-sm leading-[2.2] tracking-[0.15em] mb-20">
-            <p>2017年6月に、大阪・中津にてオープンしたショップです。</p>
-            <p>伝えるべき今を僕らの眼で選び抜き、新しい価値観を創造します。</p>
-            <p>珈琲を飲むように、本を読むように、絵を見るように、</p>
-            <p>僕たちの今を覗きに、遊びに来ていただけると嬉しいです。</p>
-            <p>皆様にお会いできることを心より楽しみにしています。</p>
-          </div>
-
-          {/* Shop Info with Image */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 text-left">
-            <div className="relative w-full max-w-[400px] aspect-[4/3] overflow-hidden">
-              <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
-            </div>
-            <div className="text-[11px] md:text-xs tracking-widest space-y-6 pt-4">
-              <div className="flex gap-8">
-                <span className="font-bold w-20 uppercase">ADDRESS</span>
-                <span>
-                  〒531-0071 大阪市北区中津3-30-4
-                  <br />
-                  <span className="border-b border-black cursor-pointer">google map</span>
-                </span>
-              </div>
-              <div className="flex gap-8">
-                <span className="font-bold w-20 uppercase">TEL&FAX</span>
-                <span>06-7506-9378</span>
-              </div>
-              <div className="flex gap-8">
-                <span className="font-bold w-20 uppercase">OPEN</span>
-                <span>12:00-21:00</span>
-              </div>
-              <div className="flex gap-8">
-                <span className="font-bold w-20 uppercase">instagram</span>
-                <span className="border-b border-black cursor-pointer">@imazine_osk</span>
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* --- SELECTION SECTION --- */}
-        <motion.section
-          id="selection"
-          // 1. スクロール停止位置をさらに深く設定 (ヘッダーとの距離を確保)
-          className="scroll-mt-60 w-full max-w-[1000px] mb-40 text-center"
-          // 2. アニメーションの開始位置を大きく下（y: 100）に設定
-          initial={{opacity: 0, y: 0}}
-          // 3. 画面内に入ってから発火するタイミングを調整
-          whileInView={{opacity: 1, y: 0}}
-          // 4. ジャンプ直後に発火して位置がズレるのを防ぐため、margin を厳しめに設定
-          viewport={{
-            once: true,
-            margin: "-20% 0px -20% 0px", // 画面の上下20%に入った時に発火
-          }}
-          transition={{
-            duration: 1.2, // 距離が長いので、少し時間をかけて優雅に
-            ease: [0.22, 1, 0.36, 1] as const, // IMA:ZINEらしい、スッと止まる高級感のあるイージング
-          }}
-        >
-          <h2 className="text-xl font-bold tracking-[0.4em] uppercase mb-4">SELLECTION</h2>
-          <div className="w-8 h-[2px] bg-black mx-auto mb-16" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            {selectionItems.map((item) => (
-              <SelectionImage
-                key={item.id}
-                item={item} // itemオブジェクトをそのまま渡す
-                basePath={basePath}
-              />
-            ))}
-          </div>
-        </motion.section>
-
-        {/* --- MORE INFORMATION (Company Info) --- */}
-        <motion.section {...fadeInUp} className="w-full max-w-[900px] text-center">
-          <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-20">more information +</p>
-          <h2 className="text-sm font-bold tracking-[0.4em] mb-16">会社概要</h2>
-
-          <div className="relative flex flex-col md:flex-row justify-center items-center md:items-stretch gap-10 md:gap-20 text-left text-[11px] md:text-xs tracking-widest">
-            {/* Center Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-black" />
-
-            {/* Left Column */}
-            <div className="space-y-6 w-full md:w-[300px]">
-              <div className="flex justify-between">
-                <span className="opacity-60">会社名</span>
-                <span className="font-bold">株式会社IMA-ZINE</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="opacity-60">設立</span>
-                <span className="font-bold">2017年6月</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="opacity-60">代表取締役</span>
-                <span className="font-bold">岩井祐二</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="opacity-60">資本金</span>
-                <span className="font-bold">200万円</span>
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-6 w-full md:w-[300px]">
-              <div className="flex justify-between items-start">
-                <span className="opacity-60">所在地</span>
-                <span className="font-bold text-right">大阪市北区中津3-30-4</span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="opacity-60">事業内容</span>
-                <span className="font-bold text-right">衣類小売業、出版及び編集業</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="opacity-60">TEL</span>
-                <span className="font-bold text-right">06-7506-9378</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="opacity-60">URL</span>
-                <span className="font-bold text-right border-b border-black">http://imazine.osaka/</span>
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      </div>
-
-      {/* --- FOOTER --- */}
-      {/* <footer className="w-full px-6 md:px-10 h-24 flex items-center justify-between relative z-10">
-        <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
-          <Link href="/about" className="hover:line-through">
-            About
-          </Link>
-          <Link href="/about#selection" className="hover:line-through">
-            Selection
-          </Link>
+        <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium">
+          <p>2017年6月に、大阪・中津にてオープンしたショップです。</p>
+          <p>伝えるべき今を僕らの眼で選び抜き、新しい価値観を創造します。</p>
+          <p>珈琲を飲むように、本を読むように、絵を見るように、</p>
+          <p>僕たちの今を覗きに、遊びに来ていただけると嬉しいです。</p>
+          <p>皆様にお会いできることを心より楽しみにしています。</p>
         </div>
-        <div className="flex items-center gap-6">
-          <p className="text-[9px] font-bold tracking-widest opacity-40">© 2019. IMA:ZINE.</p>
-          <Instagram size={18} strokeWidth={1.5} className="cursor-pointer" />
-        </div>
-      </footer> */}
 
-      {/* 共通メニューコンポーネントを呼び出す */}
-      <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
-      {/* 5. スライドメニュー (Topと共通) */}
-      {/* <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              exit={{opacity: 0}}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-md z-[110]"
-            />
-            <motion.div
-              initial={{x: "100%"}}
-              animate={{x: 0}}
-              exit={{x: "100%"}}
-              transition={{type: "spring", damping: 25, stiffness: 200}}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] flex flex-col"
-            >
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-6 md:p-10 w-full flex flex-col items-center justify-center space-y-2 bg-white"
-              >
-                <div className="relative w-8 h-4 flex items-center justify-center">
-                  <motion.div
-                    variants={lineVariants}
-                    initial="closed"
-                    animate="open"
-                    custom={1}
-                    className="absolute w-8 h-[2.5px] bg-black"
-                  />
-                  <motion.div
-                    variants={lineVariants}
-                    initial="closed"
-                    animate="open"
-                    custom={2}
-                    className="absolute w-8 h-[2.5px] bg-black"
-                  />
-                </div>
-              </button>
-              <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
-                {[
-                  //   {name: "Top", href: "/"},
-                  //   {name: "Online Store", href: "#"},
-                  {name: "About", href: "/about"},
-                  {name: "Selection", href: "/about#selection"},
-                ].map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-black tracking-[0.2em] hover:line-through transition-all uppercase"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </nav>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence> */}
+        {/* Shop Info with Image */}
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 text-left">
+          <div className="relative w-full max-w-[420px] aspect-[4/3] overflow-hidden transition-all duration-700">
+            <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
+          </div>
+
+          <div className="text-[11px] md:text-xs tracking-[0.2em] space-y-8 pt-4">
+            <div className="flex flex-col gap-2">
+              <span className="font-black opacity-30 uppercase text-[9px]">Address</span>
+              <span>〒531-0071 大阪市北区中津3-30-4</span>
+              <span className="cursor-pointer hover:line-through inline-block w-fit">Google Map</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-black opacity-30 uppercase text-[9px]">Tel & Fax</span>
+              <span>06-7506-9378</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-black opacity-30 uppercase text-[9px]">Open</span>
+              <span>12:00 - 21:00</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-black opacity-30 uppercase text-[9px]">Instagram</span>
+              <span className="cursor-pointer hover:line-through inline-block w-fit">@imazine_osk</span>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* --- SELECTION SECTION --- */}
+      <motion.section id="selection" className="w-full max-w-[1100px] mb-60 text-center scroll-mt-40">
+        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-24">SELECTION</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
+          {selectionItems.map((item) => (
+            <SelectionImage key={item.id} item={item} basePath={basePath} />
+          ))}
+        </div>
+      </motion.section>
+
+      {/* --- MORE INFORMATION (Company Info) --- */}
+      <motion.section {...fadeInUp} id="more" className="w-full max-w-[900px] text-center">
+        <p className="text-[10px] font-black tracking-[0.4em] uppercase mb-24 opacity-40">More Information</p>
+        <h2 className="text-sm font-black tracking-[0.5em] mb-20">会社概要</h2>
+
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-16 md:gap-32 text-left text-[11px] md:text-xs tracking-[0.15em]">
+          {/* ❌ Center Line removed: md:block absolute ... w-[1px] bg-black */}
+
+          <div className="space-y-8 w-full md:w-[320px]">
+            <div className="flex justify-between items-end">
+              <span className="opacity-40 text-[9px] uppercase font-bold">会社名</span>
+              <span className="font-black">株式会社IMA-ZINE</span>
+            </div>
+            <div className="flex justify-between items-end">
+              <span className="opacity-40 text-[9px] uppercase font-bold">設立</span>
+              <span className="font-black">2017年6月</span>
+            </div>
+            <div className="flex justify-between items-end">
+              <span className="opacity-40 text-[9px] uppercase font-bold">代表取締役</span>
+              <span className="font-black">岩井祐二</span>
+            </div>
+            <div className="flex justify-between items-end">
+              <span className="opacity-40 text-[9px] uppercase font-bold">資本金</span>
+              <span className="font-black">200万円</span>
+            </div>
+          </div>
+
+          <div className="space-y-8 w-full md:w-[320px]">
+            <div className="flex justify-between items-start">
+              <span className="opacity-40 text-[9px] uppercase font-bold">所在地</span>
+              <span className="font-black text-right">大阪市北区中津3-30-4</span>
+            </div>
+            <div className="flex justify-between items-start">
+              <span className="opacity-40 text-[9px] uppercase font-bold">事業内容</span>
+              <span className="font-black text-right leading-loose">衣類小売業、出版及び編集業</span>
+            </div>
+            <div className="flex justify-between items-end">
+              <span className="opacity-40 text-[9px] uppercase font-bold">Tel</span>
+              <span className="font-black text-right">06-7506-9378</span>
+            </div>
+            <div className="flex justify-between items-end">
+              <span className="opacity-40 text-[9px] uppercase font-bold">URL</span>
+              <span className="font-black text-right hover:line-through cursor-pointer">imazine.osaka</span>
+            </div>
+          </div>
+        </div>
+      </motion.section>
     </main>
   )
 }
