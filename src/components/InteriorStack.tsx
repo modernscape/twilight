@@ -36,7 +36,7 @@ function StackCard({
         y,
         zIndex: total - index,
       }}
-      className="absolute left-1/2 -translate-x-1/2 w-screen aspect-[16/9] md:aspect-[21/9]"
+      className="absolute inset-0 w-screen left-1/2 -translate-x-1/2"
     >
       <div className="relative w-full h-full overflow-hidden">
         <Image
