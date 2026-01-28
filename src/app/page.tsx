@@ -3,7 +3,7 @@
 import {useState, useEffect} from "react" // useEffectを追加
 import Image from "next/image"
 import {motion, AnimatePresence} from "framer-motion"
-import {Instagram} from "lucide-react"
+// import {Instagram} from "lucide-react"
 // import Link from "next/link"
 import Menu from "../components/Menu"
 
@@ -37,28 +37,28 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [images.length])
 
-  const lineVariants = {
-    closed: (i: number) => ({
-      rotate: 0,
-      y: i === 1 ? -3 : 3,
-      transition: {duration: 0.2},
-    }),
-    open: (i: number) => ({
-      rotate: i === 1 ? 45 : -45,
-      y: 0,
-      transition: {delay: 0.2, duration: 0.3},
-    }),
-  }
+  // const lineVariants = {
+  //   closed: (i: number) => ({
+  //     rotate: 0,
+  //     y: i === 1 ? -3 : 3,
+  //     transition: {duration: 0.2},
+  //   }),
+  //   open: (i: number) => ({
+  //     rotate: i === 1 ? 45 : -45,
+  //     y: 0,
+  //     transition: {delay: 0.2, duration: 0.3},
+  //   }),
+  // }
 
   return (
     <main className="relative h-[100dvh] w-full bg-white overflow-hidden flex flex-col font-sans text-black">
       {/* 1. 左上固定ロゴ */}
-      <div className="fixed top-6 left-6 md:top-8 md:left-8 z-[100]">
+      {/* <div className="fixed top-6 left-6 md:top-8 md:left-8 z-[100]">
         <Image src={`${basePath}/logo.png`} alt="logo" width={110} height={35} className="w-auto h-7 md:h-9 object-contain" />
-      </div>
+      </div> */}
 
       {/* 2. 右上固定MENUボタン */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {!isOpen && (
           <motion.button
             initial={{opacity: 0}}
@@ -70,7 +70,7 @@ export default function Home() {
             <span className="text-[10px] font-black tracking-[0.2em] uppercase">Menu</span>
           </motion.button>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* 3. メインレイアウト */}
       <div className="flex-1 flex flex-col md:flex-row w-full relative">
@@ -114,7 +114,7 @@ export default function Home() {
       </div>
 
       {/* 4. 統合フッター */}
-      <div className="absolute bottom-0 left-0 w-full md:relative bg-transparent md:bg-white z-50 pointer-events-none md:pointer-events-auto">
+      {/* <div className="absolute bottom-0 left-0 w-full md:relative bg-transparent md:bg-white z-50 pointer-events-none md:pointer-events-auto">
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-10 md:py-0 md:h-24 space-y-8 md:space-y-0 pb-16 md:pb-0">
           <div className="flex space-x-10 md:space-x-8 text-[10px] font-black tracking-[0.2em] pointer-events-auto">
             <a href="/about" className="hover:line-through transition-all uppercase">
@@ -131,7 +131,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* 共通メニューコンポーネントを呼び出す */}
       <Menu isOpen={isOpen} setIsOpen={setIsOpen} />

@@ -1,12 +1,57 @@
 "use client"
 
 import {useState} from "react" // useStateを追加
-import {motion, AnimatePresence, color} from "framer-motion"
+import {motion} from "framer-motion"
 import Image from "next/image"
-import Link from "next/link"
-import {Instagram} from "lucide-react"
+// import Link from "next/link"
+// import {Instagram} from "lucide-react"
 // import Menu from "@/components/Menu"
 import Menu from "@/src/components/Menu"
+import SelectionImage from "@/src/components/SelectionImage"
+
+// import {useScroll, useTransform} from "framer-motion"
+// import {useRef} from "react"
+
+// function SelectionImage_({src, title, basePath}: {src: string; title: string; basePath: string}) {
+//   const ref = useRef(null)
+//   // const {scrollYProgress} = useScroll({
+//   //   target: ref,
+//   //   // 画像が画面の下から入って(start end)から、上へ消える(end start)までを計測
+//   //   offset: ["start end", "end start"],
+//   // })
+
+//   // 進捗率（0〜1）に対して、カラーにする区間を絞り込む
+//   // 画面の30%〜60%付近に画像がある時だけカラーにする設定
+//   // const filterValue = useTransform(
+//   //   scrollYProgress,
+//   //   [0, 0.3, 0.35, 0.4, 0.6, 0.65, 0.7, 1],
+//   //   [
+//   //     "grayscale(100%)", // 0: 画面下（グレー）
+//   //     "grayscale(95%)", // 0.3: 30%地点までグレーを維持
+//   //     "grayscale(90%)", // 0.35: 30%地点までグレーを維持
+//   //     "grayscale(0%)", // 0.4: 40%地点でカラー完了
+//   //     "grayscale(0%)", // 0.6: 60%地点までカラー維持
+//   //     "grayscale(90%)", // 0.65: 60%地点までカラー維持
+//   //     "grayscale(95%)", // 0.7: 70%地点でグレーに戻る
+//   //     "grayscale(100%)", // 1: 画面上（グレー）
+//   //   ],
+//   // )
+
+//   // const opacityValue = useTransform(scrollYProgress, [0, 0.25, 0.65, 1], [0.3, 1, 1, 0.3])
+
+//   return (
+//     <div ref={ref} className="relative w-full aspect-video overflow-hidden">
+//       <motion.div
+//         style={{filter: filterValue}}
+//         className="w-full h-full"
+//         // 初期状態を強制的にグレーに設定
+//         initial={{filter: "grayscale(100%)"}}
+//       >
+//         <Image src={`${basePath}${src}`} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+//       </motion.div>
+//     </div>
+//   )
+// }
 
 export default function AboutPage() {
   const [isOpen, setIsOpen] = useState(false) // メニュー状態
@@ -19,18 +64,18 @@ export default function AboutPage() {
     transition: {duration: 1.2, ease: [0.22, 1, 0.36, 1] as const},
   }
 
-  const lineVariants = {
-    closed: (i: number) => ({
-      rotate: 0,
-      y: i === 1 ? -3 : 3,
-      transition: {duration: 0.2},
-    }),
-    open: (i: number) => ({
-      rotate: i === 1 ? 45 : -45,
-      y: 0,
-      transition: {delay: 0.2, duration: 0.3},
-    }),
-  }
+  // const lineVariants = {
+  //   closed: (i: number) => ({
+  //     rotate: 0,
+  //     y: i === 1 ? -3 : 3,
+  //     transition: {duration: 0.2},
+  //   }),
+  //   open: (i: number) => ({
+  //     rotate: i === 1 ? 45 : -45,
+  //     y: 0,
+  //     transition: {delay: 0.2, duration: 0.3},
+  //   }),
+  // }
 
   const selectionItems = [
     {id: "01", title: "Industrial Texture", img: "/img-1.png"},
@@ -42,7 +87,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen w-full bg-white text-black font-sans selection:bg-black selection:text-white scroll-smooth">
       {/* 1. 右上固定MENUボタン */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {!isOpen && (
           <motion.button
             animate={{opacity: 1}}
@@ -56,14 +101,14 @@ export default function AboutPage() {
             <span className="text-[10px] font-black tracking-[0.2em] uppercase">Menu</span>
           </motion.button>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* --- HEADER (ロゴのみ) --- */}
-      <nav className="fixed top-0 left-0 w-full h-20 flex items-center px-6 md:px-10 z-[70] bg-white/90 backdrop-blur-sm">
+      {/* <nav className="fixed top-0 left-0 w-full h-20 flex items-center px-6 md:px-10 z-[70] bg-white/90 backdrop-blur-sm">
         <Link href="/">
           <Image src={`${basePath}/logo.png`} alt="logo" width={100} height={30} className="w-auto h-6 md:h-7 object-contain" />
         </Link>
-      </nav>
+      </nav> */}
 
       <div className="pt-40 pb-32 px-6 md:px-0 flex flex-col items-center">
         {/* --- ABOUT SECTION --- */}
@@ -133,20 +178,11 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             {selectionItems.map((item) => (
-              <div key={item.id} className="flex flex-col items-center">
-                <div className="mb-6 flex items-center gap-4">
-                  <span className="text-[10px] font-bold opacity-30">{item.id}</span>
-                  <h3 className="text-sm font-bold tracking-[0.2em] uppercase">{item.title}</h3>
-                </div>
-                <div className="relative w-full aspect-video overflow-hidden group">
-                  <Image
-                    src={`${basePath}${item.img}`}
-                    alt={item.title}
-                    fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                  />
-                </div>
-              </div>
+              <SelectionImage
+                key={item.id}
+                item={item} // itemオブジェクトをそのまま渡す
+                basePath={basePath}
+              />
             ))}
           </div>
         </motion.section>
@@ -204,7 +240,7 @@ export default function AboutPage() {
       </div>
 
       {/* --- FOOTER --- */}
-      <footer className="w-full px-6 md:px-10 h-24 flex items-center justify-between relative z-10">
+      {/* <footer className="w-full px-6 md:px-10 h-24 flex items-center justify-between relative z-10">
         <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
           <Link href="/about" className="hover:line-through">
             About
@@ -217,7 +253,7 @@ export default function AboutPage() {
           <p className="text-[9px] font-bold tracking-widest opacity-40">© 2019. IMA:ZINE.</p>
           <Instagram size={18} strokeWidth={1.5} className="cursor-pointer" />
         </div>
-      </footer>
+      </footer> */}
 
       {/* 共通メニューコンポーネントを呼び出す */}
       <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
