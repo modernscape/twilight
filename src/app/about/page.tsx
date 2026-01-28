@@ -27,7 +27,7 @@ export default function AboutPage() {
     <main className="min-h-screen w-full bg-white text-black pt-40 pb-32 px-6 md:px-10 flex flex-col items-center">
       {/* --- ABOUT SECTION --- */}
       <motion.section {...fadeInUp} id="about" className="w-full mb-60 text-center">
-        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2>
+        {/* <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2> */}
         {/* ✨ 新しい画像スタックコンポーネント */}
         <InteriorStack basePath={basePath} />
 

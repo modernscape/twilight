@@ -7,14 +7,11 @@ import VerticalIndicator from "./VerticalIndicator"
 
 const images = [
   "/hero-texture-1.jpeg", //
-  "/clear.png", //
-  "/clear.png", //
+
   "/hero-texture-2.jpeg",
-  "/clear.png", //
-  "/clear.png", //
+
   "/hero-texture-3.jpeg",
-  "/clear.png", //
-  "/clear.png", //
+
   "/hero-texture-4.jpeg",
 ]
 
@@ -77,10 +74,18 @@ export default function InteriorStack({basePath}: {basePath: string}) {
   return (
     // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、
     // stickyコンテナを h-screen ではなく、画像と同じ比率（aspect-[16/9]）に合わせる
-    <div ref={containerRef} className="relative h-[800vh] w-full mt-20 mb-20">
-      <div className="sticky top-0 left-0 w-full h-screen flex flex-col items-center justify-center">
+    <div ref={containerRef} className="relative h-[400vh] w-full mt-20 mb-20">
+      <div className="sticky top-[15%] left-0 w-full aspect-[16/9] md:aspect-[21/9]">
         {/* ✨ コンポーネント化したインジケーターを配置 */}
         <VerticalIndicator total={images.length} progress={scrollYProgress} />
+
+        {/* ABOUT 文字 (画像の上に絶対配置) */}
+        <motion.h2
+          className="absolute -top-16 left-1/2 -translate-x-1/2 text-xl font-black tracking-[0.5em] uppercase z-[120]"
+          style={{opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0])}}
+        >
+          ABOUT
+        </motion.h2>
 
         {/* sticky の高さを h-screen にせず、
         画像の高さ（aspect-[16/9]）に合わせることで上下の余白を消す
