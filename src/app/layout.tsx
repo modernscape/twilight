@@ -19,21 +19,21 @@ export const metadata: Metadata = {
   description: "twilight",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="ja" className="scroll-smooth">
-      <body>
+    <html lang="ja">
+      {/* 画面の高さを100dvhに固定し、縦並びにします */}
+      <body className="h-[100dvh] flex flex-col bg-white text-black font-sans overflow-hidden">
+        {/* Navigationは浮いているので、ここにあっても高さに影響しません */}
         <Navigation />
-        {children}
+
+        {/* flex-1 を指定することで、メイン領域は 
+          「100dvh - フッターの高さ」に自動計算されます 
+        */}
+        <main className="flex-1 relative overflow-y-auto">{children}</main>
+
         <Footer />
       </body>
     </html>
-    // <html lang="en">
-    //   <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
-    // </html>
   )
 }

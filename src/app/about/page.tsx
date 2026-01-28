@@ -78,7 +78,7 @@ export default function AboutPage() {
 
       {/* --- MORE INFORMATION (Company Info) --- */}
       <motion.section {...fadeInUp} id="more" className="w-full max-w-[900px] text-center">
-        <p className="text-[10px] font-black tracking-[0.4em] uppercase mb-24 opacity-40">More Information</p>
+        {/* <p className="text-[10px] font-black tracking-[0.4em] uppercase mb-24 opacity-40">More Information</p> */}
         <h2 className="text-sm font-black tracking-[0.5em] mb-20">会社概要</h2>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-16 md:gap-32 text-left text-[11px] md:text-xs tracking-[0.15em]">
