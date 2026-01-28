@@ -3,6 +3,7 @@
 import {motion} from "framer-motion"
 import SelectionImage from "@/src/components/SelectionImage"
 import Image from "next/image"
+import InteriorStack from "@/src/components/InteriorStack"
 
 export default function AboutPage() {
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
@@ -27,6 +28,8 @@ export default function AboutPage() {
       {/* --- ABOUT SECTION --- */}
       <motion.section {...fadeInUp} id="about" className="w-full max-w-[800px] mb-60 text-center">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2>
+        {/* ✨ 新しい画像スタックコンポーネント */}
+        <InteriorStack basePath={basePath} />
 
         <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium">
           <p>2017年6月に、大阪・中津にてオープンしたショップです。</p>
