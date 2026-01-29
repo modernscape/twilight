@@ -44,7 +44,7 @@ export default function SelectionImage({item, basePath}: SelectionItemProps) {
   const scaleValue = useTransform(scrollYProgress, [0, 0.45, 1], [1.05, 1, 1.05])
 
   return (
-    <div ref={ref} className="flex flex-col items-center w-full mb-24 md:mb-32">
+    <div ref={ref} className="flex flex-col items-center w-full mb-24 md:mb-26">
       <motion.div style={{opacity: opacityValue}} className="mb-8 flex items-center gap-6">
         <span className="text-[10px] font-black opacity-40">{item.id}</span>
         <h3 className="text-sm font-black tracking-[0.3em] uppercase">{item.title}</h3>
