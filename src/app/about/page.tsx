@@ -58,11 +58,23 @@ export default function AboutPage() {
         <InteriorStack basePath={basePath} />
 
         <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium -mt-30 max-[1500px]:-mt-50">
-          <p>2017年6月に、大阪・中津にてオープンしたショップです。</p>
-          <p>伝えるべき今を僕らの眼で選び抜き、新しい価値観を創造します。</p>
-          <p>珈琲を飲むように、本を読むように、絵を見るように、</p>
-          <p>僕たちの今を覗きに、遊びに来ていただけると嬉しいです。</p>
-          <p>皆様にお会いできることを心より楽しみにしています。</p>
+          <p>
+            めまぐるしくも平穏で当たり前の⽇常 ⽇々を彩る⼩さな幸せを感じながら明⽇を愛しく思える⼈⽣でありたい
+            <br />
+            そんな精神性が”twilight”のコンセプト
+            <br />
+            <br />
+            ⼣暮れや夜明け直前の静けさ＝”薄明”の時間を意味する”twilight”。
+            <br />
+            <br />
+            何かを選び、動き出す前のわずかな瞬間。 その決断をそっと⽀えるような、毎⽇へ寄り添うモノを提案したいと考えます。
+            <br />
+            <br />
+            豊かさと厳しさを併せ持つ四季折々の気候下で朗らかに慎ましく暮らす⼈々のワードローブの⼀助となれるよう、 <br />
+            私が”twilight”を通して⼈⽣を懸けて発信していきたいのは、
+            <br />
+            普遍的な魅⼒を持ったブランド編成によるトレンドに左右されないスタイルです。
+          </p>
         </div>
 
         {/* Shop Info with Image */}
@@ -95,7 +107,7 @@ export default function AboutPage() {
 
       {/* --- SELECTION SECTION --- */}
       <motion.section id="selection" className="w-full max-w-[1100px] mb-60 text-center scroll-mt-40">
-        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-24">SELECTION</h2>
+        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-24">Location</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
           {selectionItems.map((item) => (
