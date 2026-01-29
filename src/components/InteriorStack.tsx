@@ -70,6 +70,7 @@ function StackCard({
           fill
           className="object-cover transition-all duration-1000"
           sizes="100vw"
+          priority
         />
       </div>
     </motion.div>
@@ -118,7 +119,7 @@ export default function InteriorStack({basePath}: {basePath: string}) {
         <div className="flex flex-col space-y-2 -mx-6 w-screen overflow-x-hidden mb-40">
           {images.map((src, index) => (
             <div key={`mobile-${index}`} className="relative w-full aspect-[16/9]">
-              <Image src={`${basePath}${src}`} alt={`Interior ${index}`} fill className="object-cover" sizes="100vw" />
+              <Image src={`${basePath}${src}`} alt={`Interior ${index}`} fill className="object-cover" sizes="100vw" priority />
             </div>
           ))}
         </div>
