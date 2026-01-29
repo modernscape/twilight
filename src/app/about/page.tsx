@@ -52,7 +52,7 @@ export default function AboutPage() {
 
   return (
     // ナビゲーションと被らないように pt-40（上の余白）は残します
-    <div className="min-h-screen w-full bg-white text-black pt-0 pb-12 px-6 md:px-10 flex flex-col items-center">
+    <div className="min-h-[100dvh] w-full bg-white text-black pt-0 pb-12 px-6 md:px-10 flex flex-col items-center">
       {/* --- ABOUT SECTION --- */}
       <motion.section {...fadeInUp} id="about" className="w-full mb-10 text-center scroll-mt-40">
         {/* <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2> */}
@@ -95,7 +95,7 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- SELECTION SECTION --- */}
-      <motion.section {...fadeInUp} id="selection" className="w-full max-w-[1100px] mb-0 text-center scroll-mt-40">
+      <motion.section {...fadeInUp} id="selection" className="w-full max-w-[1100px] mb-0 text-center scroll-mt-40 landscape:scroll-mt-0">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Location</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- MORE INFORMATION (Company Info) --- */}
-      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-40">
+      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-40 landscape:scroll-mt-0">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
         {/* Shop Info with Image */}
