@@ -4,7 +4,7 @@
 import {useEffect} from "react"
 import Lenis from "lenis"
 
-export default function SmoothScroll() {
+export default function SmoothScroll_() {
   useEffect(() => {
     // インスタンスの作成
     const lenis = new Lenis({

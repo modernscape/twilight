@@ -5,6 +5,7 @@ import SelectionImage from "@/src/components/SelectionImage"
 import Image from "next/image"
 import InteriorStack from "@/src/components/InteriorStack"
 import {useEffect} from "react"
+import SharedTabLink from "@/src/components/SharedTabLink"
 
 export default function AboutPage() {
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
@@ -80,7 +81,7 @@ export default function AboutPage() {
             店舗部分と住宅部分を区別することなく、両者において構造的にもデザイン的にも”繋がり”を持たせました。
             <br />
             <br />
-            <span className="text-[#999] small"> ※ 店舗部分の⾯積は約20坪。建設中のため使⽤している画像はイメージパースです</span>
+            <span className="text-[#999] small">＊ 店舗部分の⾯積は約20坪。建設中のため使⽤している画像はイメージパースです</span>
           </p>
         </div>
       </motion.section>
@@ -109,17 +110,23 @@ export default function AboutPage() {
             <br />
             様々な魅⼒が市⺠の豊かな暮らしの輪郭となっています。
             <br />
-            (春)
+            <br />
+            春
             <br />
             ⽇本三⼤夜桜のひとつ”⾼⽥城址公園”の観桜会には全国から多くの観光客が訪れます。
             <br />
-            (夏) <br />
-            アウトドアアクティビティや海産物など⽇本海からの恩恵は多くありますが、その中でも⽇本海に沈む⼣⽇は佳景です。
+            夏
             <br />
-            (秋) <br />
+            アウトドアアクティビティや海産物など⽇本海からの恩恵は多くありますが、
+            <br />
+            その中でも⽇本海に沈む⼣⽇は佳景です。
+            <br />
+            秋
+            <br />
             平野部に広がる和やかな⽥園⾵景は⼈々に季節の移ろいを伝えてくれています。
             <br />
-            (冬) <br />
+            冬
+            <br />
             豪雪地帯ならではの雪化粧は四季のコントラストを強める象徴的な要素です。
           </p>
         </div>
@@ -127,7 +134,6 @@ export default function AboutPage() {
 
       {/* --- MORE INFORMATION (Company Info) --- */}
       <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-40">
-        {/* <h2 className="text-sm font-black tracking-[0.5em] mb-20">Company</h2> */}
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Shop</h2>
 
         {/* Shop Info with Image */}
@@ -139,12 +145,20 @@ export default function AboutPage() {
           <div className="text-[11px] md:text-xs tracking-[0.2em] space-y-8 pt-4">
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Address</span>
-              <span>〒000-00 新潟県上越市◯◯◯◯◯◯</span>
-              <span className="cursor-pointer hover:line-through inline-block w-fit">Google Map</span>
+              <span>〒943-0138 新潟県上越市本長者原1</span>
+
+              <span className="cursor-pointer hover:line-through inline-block w-fit">
+                <a
+                  href="https://www.google.com/maps/place/37%C2%B005'40.8%22N+138%C2%B016'51.8%22E/@37.08786,138.2673242,15z/data=!4m4!3m3!8m2!3d37.094663!4d138.281052?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                  target="_blank"
+                >
+                  Google Map
+                </a>
+              </span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Tel & Fax</span>
-              <span>025-000-0000</span>
+              <span>080-3555-4417</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Open</span>
@@ -152,7 +166,14 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Instagram</span>
-              <span className="cursor-pointer hover:line-through inline-block w-fit">@twilight</span>
+              {/* <span className="cursor-pointer hover:line-through inline-block w-fit">
+                <a href="https://www.instagram.com/twilight_joetsu_official/" target="instagram">
+                  @twilight
+                </a>
+              </span> */}
+              <SharedTabLink>
+                <span>@twilight</span>
+              </SharedTabLink>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">access</span>
@@ -162,57 +183,11 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-
-        {/* <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-16 md:gap-32 text-left text-[11px] md:text-xs tracking-[0.15em]">
-          <div className="space-y-8 w-full md:w-[320px]">
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">会社名</span>
-              <span className="font-black">株式会社IMA-ZINE</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">設立</span>
-              <span className="font-black">2017年6月</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">代表取締役</span>
-              <span className="font-black">岩井祐二</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">資本金</span>
-              <span className="font-black">200万円</span>
-            </div>
-          </div>
-
-          <div className="space-y-8 w-full md:w-[320px]">
-            <div className="flex justify-between items-start">
-              <span className="opacity-40 text-[9px] uppercase font-bold">所在地</span>
-              <span className="font-black text-right">大阪市北区中津3-30-4</span>
-            </div>
-            <div className="flex justify-between items-start">
-              <span className="opacity-40 text-[9px] uppercase font-bold">事業内容</span>
-              <span className="font-black text-right leading-loose">衣類小売業、出版及び編集業</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">Tel</span>
-              <span className="font-black text-right">06-7506-9378</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">URL</span>
-              <span className="font-black text-right hover:line-through cursor-pointer">imazine.osaka</span>
-            </div>
-          </div>
-        </div> */}
       </motion.section>
 
-      {/* --- MORE INFORMATION (Company Info) --- */}
+      {/* ---  --- */}
       <motion.section {...fadeInUp} id="" className="w-full max-w-[900px] text-center">
-        {/* <h2 className="text-sm font-black tracking-[0.5em] mb-20">Company</h2> */}
-
-        {/* Shop Info with Image */}
         <div className="flex flex-col items-center justify-center gap-4 text-left mb-0 w-full">
-          {/* テキストエリア：読みやすさのため幅を制限して中央配置 */}
-
-          {/* 画像エリア：w-fullで横幅を最大にし、aspect比を画像に合わせる */}
           <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-0 font-medium">
             <p>
               めまぐるしくも平穏で当たり前の⽇常 ⽇々を彩る⼩さな幸せを感じながら明⽇を愛しく思える⼈⽣でありたい
@@ -234,22 +209,9 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="relative w-full aspect-[4/3] transition-all duration-700">
-            <Image
-              src={`${basePath}/map.png`}
-              alt="map"
-              fill
-              priority // 重要な画像であれば優先読み込み
-              className="object-contain" // 画像全体を収める
-            />
+            <Image src={`${basePath}/map.png`} alt="map" fill priority className="object-contain" />
           </div>
           <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-0 font-medium">
-            {/* <p className="whitespace-pre-wrap leading-relaxed px-0 md:px-30 text-[14px] bold mb-0">
-              □ JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分
-              <br />
-              □ 北陸⾃動⾞道 上越インターチェンジより⾞で約10分
-              <br />□ 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分
-            </p> */}
-            {/* <p className="whitespace-pre-wrap leading-relaxed px-0 md:px-30"> */}
             <p>
               “twilight”は上越市の中⼼地である⾼⽥エリア周辺の平野部に位置します。
               <br />
@@ -268,46 +230,6 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-
-        {/* <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-16 md:gap-32 text-left text-[11px] md:text-xs tracking-[0.15em]">
-          <div className="space-y-8 w-full md:w-[320px]">
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">会社名</span>
-              <span className="font-black">株式会社IMA-ZINE</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">設立</span>
-              <span className="font-black">2017年6月</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">代表取締役</span>
-              <span className="font-black">岩井祐二</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">資本金</span>
-              <span className="font-black">200万円</span>
-            </div>
-          </div>
-
-          <div className="space-y-8 w-full md:w-[320px]">
-            <div className="flex justify-between items-start">
-              <span className="opacity-40 text-[9px] uppercase font-bold">所在地</span>
-              <span className="font-black text-right">大阪市北区中津3-30-4</span>
-            </div>
-            <div className="flex justify-between items-start">
-              <span className="opacity-40 text-[9px] uppercase font-bold">事業内容</span>
-              <span className="font-black text-right leading-loose">衣類小売業、出版及び編集業</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">Tel</span>
-              <span className="font-black text-right">06-7506-9378</span>
-            </div>
-            <div className="flex justify-between items-end">
-              <span className="opacity-40 text-[9px] uppercase font-bold">URL</span>
-              <span className="font-black text-right hover:line-through cursor-pointer">imazine.osaka</span>
-            </div>
-          </div>
-        </div> */}
       </motion.section>
     </div>
   )
