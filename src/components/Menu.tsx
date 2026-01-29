@@ -39,7 +39,8 @@ export default function Menu({isOpen, setIsOpen}: MenuProps) {
     // {name: "Top", href: "/", isExternal: false},
     // {name: "Online Store", href: "#", isExternal: true},
     {name: "Shop", href: "/about", isExternal: false, id: "about"},
-    {name: "Selection", href: "/about", isExternal: false, id: "selection"},
+    {name: "Location", href: "/about", isExternal: false, id: "selection"},
+    {name: "Company", href: "/about", isExternal: false, id: "company"},
   ]
   return (
     <AnimatePresence>

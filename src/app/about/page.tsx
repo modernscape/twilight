@@ -59,21 +59,28 @@ export default function AboutPage() {
 
         <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium -mt-30 max-[1500px]:-mt-50">
           <p>
-            めまぐるしくも平穏で当たり前の⽇常 ⽇々を彩る⼩さな幸せを感じながら明⽇を愛しく思える⼈⽣でありたい
+            コンセプトを表現するための空間として ⽩を基調としたシンプルな内装に設えました。
             <br />
-            そんな精神性が”twilight”のコンセプト
+            壁やカウンターはすべて漆喰の塗り壁仕上げ となっており、
             <br />
-            <br />
-            ⼣暮れや夜明け直前の静けさ＝”薄明”の時間を意味する”twilight”。
-            <br />
-            <br />
-            何かを選び、動き出す前のわずかな瞬間。 その決断をそっと⽀えるような、毎⽇へ寄り添うモノを提案したいと考えます。
+            スペースを貫く⽊柱は構造上必要不可⽋だったものをそのままの姿/表情で 残すなど、⾃然素材を多⽤しています。
             <br />
             <br />
-            豊かさと厳しさを併せ持つ四季折々の気候下で朗らかに慎ましく暮らす⼈々のワードローブの⼀助となれるよう、 <br />
-            私が”twilight”を通して⼈⽣を懸けて発信していきたいのは、
+            “漆喰・無垢材・コンクリート” これら３つのマテリアルの組み合わせや
             <br />
-            普遍的な魅⼒を持ったブランド編成によるトレンドに左右されないスタイルです。
+            ⾃然な⾊使いによる内装は住宅部分と
+            <br />
+            リンクするように設計/デザインされています。
+            <br />
+            「ライフも、ワークも、⼀括りが良い。」
+            <br />
+            <br />
+            そんな私の理想を叶えるための基盤として アパレルでは珍しい“店舗兼住宅”のカタチを 選びましたので、
+            <br />
+            店舗部分と住宅部分を区別することなく、両者において構造的にもデザイン的にも”繋がり”を持たせました。
+            <br />
+            <br />
+            <span className="text-[#999] small"> (店舗部分の⾯積は約20坪。建設中のため 使⽤している画像はイメージパースです)</span>
           </p>
         </div>
 
@@ -144,12 +151,12 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- MORE INFORMATION (Company Info) --- */}
-      <motion.section {...fadeInUp} id="more" className="w-full max-w-[1200px] text-center">
+      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-40">
         {/* <h2 className="text-sm font-black tracking-[0.5em] mb-20">Company</h2> */}
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-24">Company</h2>
 
         {/* Shop Info with Image */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 text-left mb-8">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 text-left mb-14">
           <div className="relative w-full w-full md:max-w-[600px] aspect-[4/3] overflow-hidden transition-all duration-700">
             <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
           </div>
@@ -227,8 +234,38 @@ export default function AboutPage() {
         {/* <h2 className="text-sm font-black tracking-[0.5em] mb-20">Company</h2> */}
 
         {/* Shop Info with Image */}
-        <div className="flex flex-col items-center justify-center gap-10 text-left mb-0 w-full">
+        <div className="flex flex-col items-center justify-center gap-4 text-left mb-0 w-full">
           {/* テキストエリア：読みやすさのため幅を制限して中央配置 */}
+
+          {/* 画像エリア：w-fullで横幅を最大にし、aspect比を画像に合わせる */}
+          <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-0 font-medium">
+            <p>
+              めまぐるしくも平穏で当たり前の⽇常 ⽇々を彩る⼩さな幸せを感じながら明⽇を愛しく思える⼈⽣でありたい
+              <br />
+              そんな精神性が”twilight”のコンセプト
+              <br />
+              <br />
+              ⼣暮れや夜明け直前の静けさ＝”薄明”の時間を意味する”twilight”。
+              <br />
+              <br />
+              何かを選び、動き出す前のわずかな瞬間。 その決断をそっと⽀えるような、毎⽇へ寄り添うモノを提案したいと考えます。
+              <br />
+              <br />
+              豊かさと厳しさを併せ持つ四季折々の気候下で朗らかに慎ましく暮らす⼈々のワードローブの⼀助となれるよう、 <br />
+              私が”twilight”を通して⼈⽣を懸けて発信していきたいのは、
+              <br />
+              普遍的な魅⼒を持ったブランド編成によるトレンドに左右されないスタイルです。
+            </p>
+          </div>
+          <div className="relative w-full aspect-[4/3] transition-all duration-700">
+            <Image
+              src={`${basePath}/map.png`}
+              alt="Shop"
+              fill
+              priority // 重要な画像であれば優先読み込み
+              className="object-contain" // 画像全体を収める
+            />
+          </div>
           <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] font-medium">
             {/* <p className="whitespace-pre-wrap leading-relaxed px-0 md:px-30 text-[14px] bold mb-0">
               □ JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分
@@ -237,8 +274,6 @@ export default function AboutPage() {
               <br />□ 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分
             </p> */}
             <p className="whitespace-pre-wrap leading-relaxed px-0 md:px-30">
-              <br />
-              <br />
               “twilight”は上越市の中⼼地である⾼⽥エリア 周辺の平野部に位置します。
               <br />
               以下に記載した市内の主要陸路からのアクセスに優れた場所でありながら、
@@ -254,16 +289,6 @@ export default function AboutPage() {
               <br />
               この地にきちんと 根差した⽇常を積み重ねていくことが主眼です。
             </p>
-          </div>
-          {/* 画像エリア：w-fullで横幅を最大にし、aspect比を画像に合わせる */}
-          <div className="relative w-full aspect-[4/3] transition-all duration-700">
-            <Image
-              src={`${basePath}/map.png`}
-              alt="Shop"
-              fill
-              priority // 重要な画像であれば優先読み込み
-              className="object-contain" // 画像全体を収める
-            />
           </div>
         </div>
 
