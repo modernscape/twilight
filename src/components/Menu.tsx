@@ -88,7 +88,7 @@ export default function Menu({isOpen, setIsOpen}: MenuProps) {
             {/* ナビゲーション */}
             <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
               {menuItems.map((item) => {
-                const className = "text-lg font-black tracking-[0.2em] hover:opacity-50 transition-all uppercase"
+                const className = "text-lg font-black tracking-[0.2em] transition-all uppercase hover:line-through"
 
                 return (
                   <Link

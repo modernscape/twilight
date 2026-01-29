@@ -15,6 +15,7 @@ export default function Footer() {
       })
     }
   }
+
   return (
     <footer className="w-full px-6 md:px-10 h-32 flex items-center justify-between bg-white">
       {/* 左下リンク */}

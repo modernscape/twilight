@@ -112,10 +112,10 @@ export default function InteriorStack({basePath}: {basePath: string}) {
   return (
     <>
       {/* 📱 スマホ用 (Mobile): 縦に画像を並べるだけ */}
-      <div className="block md:hidden space-y-4 py-10">
+      <div className="block md:hidden space-y-4 py-25 mb-10">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase text-center mb-8">SHOP</h2>
         {/* ✨ 画像コンテナ：ここで親の px-6 を打ち消す */}
-        <div className="flex flex-col space-y-2 -mx-6 w-screen overflow-x-hidden">
+        <div className="flex flex-col space-y-2 -mx-6 w-screen overflow-x-hidden mb-40">
           {images.map((src, index) => (
             <div key={`mobile-${index}`} className="relative w-full aspect-[16/9]">
               <Image src={`${basePath}${src}`} alt={`Interior ${index}`} fill className="object-cover" sizes="100vw" />
