@@ -141,11 +141,11 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- MORE INFORMATION (Company Info) --- */}
-      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-20 landscape:scroll-mt-10">
+      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-20 landscape:scroll-mt-10 mb-10">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
         {/* Shop Info with Image */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 text-left mb-14">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 text-left mb-10 md:mb-14">
           <div className="relative w-full w-full md:max-w-[600px] aspect-[4/3] overflow-hidden transition-all duration-700">
             <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
           </div>
@@ -163,6 +163,10 @@ export default function AboutPage() {
                   Google Map
                 </a>
               </span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
+              <span>twilight_090913@yahoo.co.jp</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Tel & Fax</span>
