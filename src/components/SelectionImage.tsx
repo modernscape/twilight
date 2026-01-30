@@ -45,9 +45,22 @@ export default function SelectionImage({item, basePath}: SelectionItemProps) {
 
   return (
     <div ref={ref} className="flex flex-col items-center w-full mb-16 md:mb-26 landscape:mb-14">
-      <motion.div style={{opacity: opacityValue}} className="mb-8 landscape:mb-4 flex items-center gap-6">
+      <motion.div style={{opacity: opacityValue}} className="mb-6 landscape:mb-4 flex items-center gap-6">
         <span className="text-[10px] font-black opacity-40">{item.id}</span>
-        <h3 className="text-sm font-black tracking-[0.3em] uppercase landscape:min-h-[3em] flex items-center">{item.title}</h3>
+        <h3
+          className="
+                    text-sm font-black tracking-[0.3em] uppercase 
+                    leading-relaxed 
+                    inline-block      
+                    text-center
+                    break-keep       
+                    word-break-normal    
+                    max-w-[14em]          
+                    text-center
+                  "
+        >
+          {item.title}
+        </h3>
       </motion.div>
 
       <div className="relative w-full max-w-[1000px] overflow-hidden">
