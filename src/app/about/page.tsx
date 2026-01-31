@@ -147,7 +147,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
           {/* Shop Info with Image */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-12 text-left mb-10 md:mb-14">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-12 text-left mb-6 md:mb-6">
             <div
               className="
                           relative 
@@ -200,18 +200,26 @@ export default function AboutPage() {
                   <span>@twilight</span>
                 </SharedTabLink>
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="font-black opacity-30 uppercase text-[9px]">access</span>
-                <span className="inline-flex items-center gap-1">
-                  <Square className="text-gray-400 inline" size={12} /> JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <Square className="text-gray-400 inline" size={12} /> 北陸⾃動⾞道 上越インターチェンジより⾞で約10分
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <Square className="text-gray-400 inline" size={12} /> 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分
-                </span>
-              </div>
+            </div>
+          </div>
+          <div className="text-[11px] md:text-xs tracking-[0.2em] space-y-8 pt-4 mb-18">
+            <div className="flex flex-col gap-2">
+              <span className="font-black opacity-30 uppercase text-[9px]">access</span>
+              <span className="inline-flex items-center gap-1">
+                <Square className="text-gray-400 inline" size={12} /> JR北陸新幹線 (東京-上越妙⾼/約2時間)
+                <br className="block md:hidden" />
+                上越妙⾼駅より⾞で約15分
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Square className="text-gray-400 inline" size={12} /> 北陸⾃動⾞道
+                <br className="block md:hidden" />
+                上越インターチェンジより⾞で約10分
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Square className="text-gray-400 inline" size={12} /> 上信越⾃動⾞道
+                <br className="block md:hidden" />
+                上越⾼⽥インターチェンジより⾞で約15分
+              </span>
             </div>
           </div>
         </motion.section>
