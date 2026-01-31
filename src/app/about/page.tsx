@@ -203,7 +203,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="text-[11px] md:text-xs tracking-[0.2em] space-y-8 pt-4 mb-18">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               <span className="font-black opacity-30 uppercase text-[9px]">access</span>
               <span className="inline-flex items-center gap-1">
                 <Square className="text-gray-400 inline" size={12} /> JR北陸新幹線 (東京-上越妙⾼/約2時間)
