@@ -154,7 +154,7 @@ export default function AboutPage() {
                           w-[70%]                 /* 👈 基本の幅を親の70%にする */
                           md:w-full               /* 👈 PCでは親(flexアイテム)の全幅を使う */
                           md:max-w-[500px]        /* 👈 ただしPCでも500px以上にはしない */
-                          landscape:max-w-[500px]   /* 👈 スマホ横向き時はさらに抑えて50%にするとより綺麗 */
+                          landscape:w-auto   /* 👈 スマホ横向き時はさらに抑えて50%にするとより綺麗 */
                           aspect-[4/3] 
                           mx-auto                 /* 👈 中央に配置 */
                           flex-shrink-0 
