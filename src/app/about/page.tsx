@@ -148,7 +148,7 @@ export default function AboutPage() {
 
           {/* Shop Info with Image */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 text-left mb-10 md:mb-14">
-            <div className="relative w-full w-full md:max-w-[600px] aspect-[4/3] overflow-hidden transition-all duration-700">
+            <div className="relative w-full w-full md:max-w-[600px] flex-shrink-0 aspect-[4/3] overflow-hidden transition-all duration-700">
               <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
             </div>
 
