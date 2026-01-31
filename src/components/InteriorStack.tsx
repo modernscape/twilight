@@ -137,7 +137,7 @@ export default function InteriorStack({basePath}: {basePath: string}) {
             {/* </div> */}
             {/* ABOUT 文字 (画像の上に絶対配置) */}
             <motion.h2
-              className="absolute -top-16 left-1/2 -translate-x-1/2 text-xl font-black tracking-[0.5em] uppercase z-[120]"
+              className="absolute -top-16 left-1/2 -translate-x-1/2 text-xl font-black tracking-[0.5em] uppercase z-[120] landscape:hidden"
               style={{opacity: useTransform(scrollYProgress, [0.95, 1], [1, 0])}}
             >
               SHOP
