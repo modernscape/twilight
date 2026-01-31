@@ -24,10 +24,10 @@ export default function Footer() {
         <Link href="/about" className="hover:line-through" onClick={() => handleJump("about")}>
           Shop
         </Link>
-        <Link href="/about" className="hover:line-through" onClick={() => handleJump("selection")}>
+        <Link href="/about#selection" className="hover:line-through" onClick={() => handleJump("selection")}>
           Location
         </Link>
-        <Link href="/about" className="hover:line-through" onClick={() => handleJump("company")}>
+        <Link href="/about#company" className="hover:line-through" onClick={() => handleJump("company")}>
           Company
         </Link>
       </div>
