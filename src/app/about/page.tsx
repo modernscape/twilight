@@ -50,7 +50,7 @@ export default function AboutPage() {
 
   return (
     // ナビゲーションと被らないように pt-40（上の余白）は残します
-    <div className="min-h-[100dvh] w-full bg-white text-black pt-0 pb-12 px-6 md:px-10 flex flex-col items-center">
+    <div className="min-h-[100dvh] w-full bg-white text-black pt-0 pb-12 px-6 md:px-10 flex flex-col items-center overflow-x-hidden relative">
       {/* --- ABOUT SECTION --- */}
       <motion.section {...fadeInUp} id="about" className="w-full mb-10 text-center scroll-mt-20 landscape:scroll-mt-160">
         {/* ✨ 新しい画像スタックコンポーネント */}
