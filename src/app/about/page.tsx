@@ -150,18 +150,18 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 text-left mb-10 md:mb-14">
             <div
               className="
-  relative 
-  w-full 
-  md:max-w-[500px] 
-  landscape:max-w-[400px]  /* 👈 横向き時の幅を少し抑える */
-  aspect-[4/3] 
-  max-h-[70vh]             /* 👈 画面の高さの70%以上にさせない */
-  mx-auto                  /* 👈 中央寄せ */
-  flex-shrink-0 
-  overflow-hidden 
-  transition-all 
-  duration-700
-"
+                          relative 
+                          w-[70%]                 /* 👈 基本の幅を親の70%にする */
+                          md:w-full               /* 👈 PCでは親(flexアイテム)の全幅を使う */
+                          md:max-w-[500px]        /* 👈 ただしPCでも500px以上にはしない */
+                          landscape:max-w-[50%]   /* 👈 スマホ横向き時はさらに抑えて50%にするとより綺麗 */
+                          aspect-[4/3] 
+                          mx-auto                 /* 👈 中央に配置 */
+                          flex-shrink-0 
+                          overflow-hidden 
+                          transition-all 
+                          duration-700
+                        "
             >
               <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
             </div>
