@@ -26,7 +26,6 @@ body {
 }
 
 @layer utilities {
-  /* スクロールバーを非表示にするクラス */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
