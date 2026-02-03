@@ -44,8 +44,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        # ここで static_site_generator: next を書かないことで、
-        # GitHub側による余計な basePath の書き換えを防ぎます
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
@@ -53,10 +51,18 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
+      # --- ここが重要な追加ステップ ---
+      - name: Create CNAME record
+        run: |
+          if [ "${{ github.ref_name }}" == "main" ]; then
+            echo "www.twilight-joetsu.com" > ./out/CNAME
+          else
+            echo "test.twilight-joetsu.com" > ./out/CNAME
+          fi
+      # ------------------------------
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Next.js の output: 'export' は必ずこのフォルダを作ります
           path: ./out
 
   deploy:
