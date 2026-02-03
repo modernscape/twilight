@@ -1,14 +1,17 @@
-/** @type {import('next').NextConfig} */
-// const isProd = process.env.NODE_ENV === "production"
+// projects/twilight/next.config.ts
+import type {NextConfig} from "next"
 
-const nextConfig = {
-  output: "export",
-  // GitHub Actions でビルドされる時だけリポジトリ名をパスに含める
-  // basePath: isProd ? "/twilight" : "",
-  basePath: process.env.GITHUB_REPOSITORY && !process.env.IS_CUSTOM_DOMAIN ? `/${process.env.GITHUB_REPOSITORY.split("/")[1]}` : "",
+const nextConfig: NextConfig = {
+  output: "export", // これを追加！
+  basePath: process.env.VERCEL ? "/twilight" : "",
+  assetPrefix: process.env.VERCEL ? "/twilight" : "",
+
+  // 画像最適化機能をオフにする（GitHub Pagesなどの静的ホストでは必須）
   images: {
     unoptimized: true,
   },
+
+  reactCompiler: true,
 }
 
-module.exports = nextConfig
+export default nextConfig
