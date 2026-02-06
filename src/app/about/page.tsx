@@ -183,7 +183,7 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
-                <span className="pointer-events-none cursor-not-allowed opacity-50">
+                <span className="cursor-not-allowed opacity-50">
                   <a href="mailto:info@twilight-joetsu.com">info@twilight-joetsu.com</a>
                 </span>
               </div>
